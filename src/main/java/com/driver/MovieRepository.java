@@ -2,10 +2,7 @@ package com.driver;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class MovieRepository {
@@ -96,26 +93,26 @@ public class MovieRepository {
 
     public void deleteAllDirector(){
 
-//        HashSet<String> moviesSet = new HashSet<String>();
-//
-//        //Deleting the director's map
-//        directorMap = new HashMap<>();
-//
-//        //Finding out all the movies by all the directors combined
-//        for(String director: directorMovieMapping.keySet()){
-//
-//            //Iterating in the list of movies by a director.
-//            for(String movie: directorMovieMapping.get(director)){
-//                moviesSet.add(movie);
-//            }
-//        }
-//
-//        //Deleting the movie from the movieDb.
-//        for(String movie: moviesSet){
-//            if(movieMap.containsKey(movie)){
-//                movieMap.remove(movie);
-//            }
-//        }
+        HashSet<String> moviesSet = new HashSet<String>();
+
+        //Deleting the director's map
+        directorMap = new HashMap<>();
+
+        //Finding out all the movies by all the directors combined
+        for(String director: directorMovieMapping.keySet()){
+
+            //Iterating in the list of movies by a director.
+            for(String movie: directorMovieMapping.get(director)){
+                moviesSet.add(movie);
+            }
+        }
+
+        //Deleting the movie from the movieDb.
+        for(String movie: moviesSet){
+            if(movieMap.containsKey(movie)){
+                movieMap.remove(movie);
+            }
+        }
         //clearing the pair.
         directorMovieMapping = new HashMap<>();
     }
