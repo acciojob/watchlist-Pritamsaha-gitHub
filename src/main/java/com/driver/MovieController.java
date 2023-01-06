@@ -66,4 +66,10 @@ public class MovieController {
         movieService.deleteAllDirectors();
         return new ResponseEntity<>("All directors deleted successfully", HttpStatus.CREATED);
     }
+    //get-director-by-movie
+    @GetMapping("/get-director-by-moviename/{name}")
+    public ResponseEntity<String> getDirectorByMovieName(@PathVariable String movie){
+        String dirname=movieService.getDirectorByMovie(movie);
+        return new ResponseEntity<>(dirname,HttpStatus.FOUND);
+    }
 }

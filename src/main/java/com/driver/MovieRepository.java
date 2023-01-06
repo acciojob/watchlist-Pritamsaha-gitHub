@@ -14,8 +14,6 @@ public class MovieRepository {
     //Pair is : DirectorName, List of Movie Names
 
 
-    //Initialization is very important :
-
     public MovieRepository(){
         this.movieMap = new HashMap<String, Movie>();
         this.directorMap = new HashMap<String, Director>();
@@ -32,7 +30,7 @@ public class MovieRepository {
 
     public void saveMovieDirectorPair(String movie, String director){
 
-        //1. Add the movie into Datbase ---> WRONG bcz I dont have te movie object
+        //1. Add the movie into Datbase
 
         if(movieMap.containsKey(movie)&&directorMap.containsKey(director)){
 
@@ -115,5 +113,19 @@ public class MovieRepository {
         }
         //clearing the pair.
         directorMovieMapping = new HashMap<>();
+    }
+    //get-director-by-movie
+    public String getDirectorByMovie(String movie){
+
+        for(String name : directorMovieMapping.keySet()){
+            List<String> movieslist = new ArrayList<String>();
+            movieslist=directorMovieMapping.get(name);
+            for(int i=0;i<movieslist.size();i++){
+                if(movie.equals(movieslist.get(i))){
+                    return name;
+                }
+            }
+        }
+        return "Director not found";
     }
 }
